@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>ars_launchers</name>
+  <version>0.0.0</version>
+  <description>The ars_launchers</description>
+
+  <maintainer email="joseluis.sanlop@gmail.com">Jose Luis SANCHEZ-LOPEZ</maintainer>
+  <author email="joseluis.sanlop@gmail.com">Jose Luis SANCHEZ-LOPEZ</author>
+
+  <license>BSD</license>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+
+  <export>
+  </export>
+
+</package>
