@@ -6,8 +6,8 @@ find_package(catkin REQUIRED
 
 
 catkin_package(
-    DEPENDS
-    CATKIN_DEPENDS
-    INCLUDE_DIRS
-    LIBRARIES
+  DEPENDS
+  CATKIN_DEPENDS
+  INCLUDE_DIRS
+  LIBRARIES
 )
