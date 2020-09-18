@@ -1,5 +1,5 @@
 # source
-source devel/setup.bash
+source $ARS_CATKIN_WORKSPACE/devel/setup.bash
 
 # compile
 catkin build
