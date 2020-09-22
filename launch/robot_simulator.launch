@@ -1,0 +1,12 @@
+<!-- -->
+<launch>
+
+  <group ns="robot_sim">
+
+    <node pkg="ars_sim_robot" type="ars_sim_robot_ros_node.py" name="ars_sim_robot_node" output="screen">
+      <remap from="robot_cmd" to="/robot_cmd"/>
+    </node>
+    
+  </group>
+
+</launch>

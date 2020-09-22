@@ -10,23 +10,16 @@ catkin clean
 # ros master
 roscore
 
-# rqt tools
-rqt
-rqt_plot
-rqt_graph
-
 # rviz for visualization
-# config by default
-rviz
 # with ars config
 rosrun rviz rviz -d $(rospack find ars_config)/config/rviz_config/rviz_conf_sim.rviz
 
 # Robot simulator
-roslaunch ars_sim_robot ars_sim_robot.launch
+roslaunch ars_launchers robot_simulator.launch
 
 # Robot urdf model for visualization
 roslaunch ars_robot_models robot_urdf.launch
 
-# Trajectory record for visualization
-roslaunch ars_launchers robot_trajectory.launch
+# Motion controller
+roslaunch ars_launchers robot_motion_controller.launch
 

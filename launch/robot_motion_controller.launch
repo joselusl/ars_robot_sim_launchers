@@ -1,0 +1,20 @@
+<!-- -->
+<launch>
+
+  <group ns="motion_controller">
+
+    <node name="ars_motion_controller_node" pkg="ars_motion_controller" type="ars_motion_controller_ros_node.py" output="screen" >
+      <remap from="robot_cmd" to="/robot_cmd"/>
+  
+      <remap from="robot_pose" to="/robot_sim/robot_pose"/>
+      <remap from="robot_velocity_world" to="/robot_sim/robot_velocity_world"/>
+
+      <remap from="robot_pose_ref" to="/robot_pose_ref"/>
+      <remap from="robot_velocity_world_ref" to="/robot_velocity_world_ref"/>
+      <remap from="robot_cmd_ref" to="/robot_cmd_ref"/>     
+
+    </node>
+    
+  </group>
+
+</launch>
