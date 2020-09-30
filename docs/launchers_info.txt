@@ -10,16 +10,40 @@ catkin clean
 # ros master
 roscore
 
+
 # rviz for visualization
 # with ars config
 rosrun rviz rviz -d $(rospack find ars_config)/config/rviz_config/rviz_conf_sim.rviz
 
-# Robot simulator
+# Simulator Robot 
 roslaunch ars_launchers robot_simulator.launch
 
-# Robot urdf model for visualization
+# Robot urdf model for visualization (optional)
 roslaunch ars_robot_models robot_urdf.launch
 
 # Motion controller
 roslaunch ars_launchers robot_motion_controller.launch
+
+# Path follower (with reactive obstacle avoidance)
+roslaunch ars_launchers robot_path_follower.launch
+
+# Simulator environment & Simulator collision detection
+roslaunch ars_launchers environment_simulator.launch
+
+# Sim obstacle detector
+roslaunch ars_launchers obstacles_detector_simulator.launch
+
+
+
+# Path publisher
+#
+bash $ARS_PROJECT/scripts/publish_path_01.sh
+#
+bash $ARS_PROJECT/scripts/publish_path_02.sh
+
+
+# Remove obstacles dynamic
+rostopic pub -1 /environment_simulator/flag_dynamic_obstacles std_msgs/Bool "data: false"
+# Add obstacles dynamic
+rostopic pub -1 /environment_simulator/flag_dynamic_obstacles std_msgs/Bool "data: true"
 

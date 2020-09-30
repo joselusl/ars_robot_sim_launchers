@@ -1,0 +1,22 @@
+<!-- -->
+<launch>
+
+  <group ns="path_follower">
+
+    <node name="ars_path_follower_node" pkg="ars_path_follower" type="ars_path_follower_ros_node.py" output="screen" >
+      <remap from="robot_trajectory_ref" to="/robot_trajectory_ref"/>
+  
+      <remap from="robot_pose" to="/robot_sim/robot_pose"/>
+      <remap from="robot_velocity_world" to="/robot_sim/robot_velocity_world"/>
+
+      <remap from="obstacles_detected" to="/obstacles_detected"/>
+
+      <remap from="robot_pose_ctr_ref" to="/robot_pose_ref"/>
+      <remap from="robot_velocity_world_ctr_ref" to="/robot_velocity_world_ref"/>
+      <remap from="robot_ctr_cmd_ref" to="/robot_cmd_ref"/>     
+
+    </node>
+    
+  </group>
+
+</launch>
