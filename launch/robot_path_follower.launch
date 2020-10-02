@@ -9,8 +9,6 @@
       <remap from="robot_pose" to="/robot_sim/robot_pose"/>
       <remap from="robot_velocity_world" to="/robot_sim/robot_velocity_world"/>
 
-      <remap from="obstacles_detected" to="/obstacles_detected"/>
-
       <remap from="robot_pose_ctr_ref" to="/robot_pose_ref"/>
       <remap from="robot_velocity_world_ctr_ref" to="/robot_velocity_world_ref"/>
       <remap from="robot_ctr_cmd_ref" to="/robot_cmd_ref"/>     
