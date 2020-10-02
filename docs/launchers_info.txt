@@ -42,6 +42,10 @@ roslaunch ars_launchers robot_motion_controller.launch
 # Path follower
 roslaunch ars_launchers robot_path_follower.launch
 
+# Reactive Collision-free trajectory planner (reactive obstacle avoidance)
+# Dummy
+rosrun topic_tools relay /robot_trajectory_ref /collis_free_robot_trajectory_ref
+
 
 
 # Path publisher
