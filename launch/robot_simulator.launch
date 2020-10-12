@@ -1,21 +1,25 @@
 <!-- -->
 <launch>
 
-  <group ns="robot_sim">
+  <group ns="simulator">
 
-    <node pkg="ars_sim_robot" type="ars_sim_robot_ros_node.py" name="ars_sim_robot_node" output="screen">
+    <group ns="sim_robot">
 
-      <remap from="robot_cmd" to="/robot_cmd"/>
+      <node pkg="ars_sim_robot" type="ars_sim_robot_ros_node.py" name="ars_sim_robot_node" output="screen">
 
-      <remap from="robot_pose" to="/robot_sim/robot_pose"/>
-      <remap from="robot_velocity_world" to="/robot_sim/robot_velocity_world"/>
-      <remap from="robot_velocity_robot" to="/robot_sim/robot_velocity_robot"/>
+        <remap from="robot_cmd" to="/robot_cmd"/>
 
-      <remap from="robot_collision" to="/robot_sim/robot_collision"/>
+        <remap from="robot_pose" to="/robot_sim/robot_pose"/>
+        <remap from="robot_velocity_world" to="/robot_sim/robot_velocity_world"/>
+        <remap from="robot_velocity_robot" to="/robot_sim/robot_velocity_robot"/>
 
-    </node>
+        <remap from="robot_collision" to="robot_collision"/>
 
-    
+      </node>
+
+      
+    </group>
+
   </group>
 
 </launch>

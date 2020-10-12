@@ -32,21 +32,35 @@ roslaunch ars_launchers collision_detection_simulator.launch
 # Sim obstacle detector
 roslaunch ars_launchers obstacles_detector_simulator.launch
 
+# Robot sensors
+roslaunch ars_launchers robot_simulator_sensors_robot.launch
+
 
 # Remote controller
 # TODO
 
 # Motion controller
+# Without state estimator
 roslaunch ars_launchers robot_motion_controller.launch
+# With state estimator
+roslaunch ars_launchers robot_motion_controller.launch flag_use_state_estim:=True
 
 # Path follower
+# Without state estimator
 roslaunch ars_launchers robot_path_follower.launch
+# With state estimator
+roslaunch ars_launchers robot_path_follower.launch flag_use_state_estim:=True
 
 # Reactive Collision-free trajectory planner (reactive obstacle avoidance)
 # Dummy
 rosrun topic_tools relay /robot_trajectory_ref /collis_free_robot_trajectory_ref
-# Real
+# Real - Without state estimator
 roslaunch ars_launchers robot_obstacle_avoidance.launch
+# Real - With state estimator
+roslaunch ars_launchers robot_obstacle_avoidance.launch flag_use_state_estim:=True
+
+# Sensor fusion State estimator
+roslaunch ars_launchers robot_msf_state_estimator.launch
 
 
 
@@ -63,7 +77,7 @@ bash $ARS_PROJECT/scripts/publish_path_03.sh
 
 
 # Remove obstacles dynamic
-rostopic pub -1 /environment_simulator/flag_dynamic_obstacles std_msgs/Bool "data: false"
+rostopic pub -1 /simulator/sim_environment/flag_dynamic_obstacles std_msgs/Bool "data: false"
 # Add obstacles dynamic
-rostopic pub -1 /environment_simulator/flag_dynamic_obstacles std_msgs/Bool "data: true"
+rostopic pub -1 /simulator/sim_environment/flag_dynamic_obstacles std_msgs/Bool "data: true"
 

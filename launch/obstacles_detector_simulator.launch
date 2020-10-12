@@ -1,19 +1,23 @@
 <!-- -->
 <launch>
 
-  <group ns="obstacles_detector_simulator">
+  <group ns="simulator">
 
-    <node name="ars_sim_obstacles_detector_node" pkg="ars_sim_obstacles_detector" type="ars_sim_obstacles_detector_ros_node.py" output="screen" >
- 
-      <remap from="robot_pose" to="/robot_sim/robot_pose"/> 
+    <group ns="sim_obstacles_detector">
 
-      <remap from="obstacles_static" to="/obstacles_static"/>
-      <remap from="obstacles_dynamic" to="/obstacles_dynamic"/>
-
-      <remap from="obstacles_detected" to="/obstacles_detected"/>
-  
-    </node>
+      <node name="ars_sim_obstacles_detector_node" pkg="ars_sim_obstacles_detector" type="ars_sim_obstacles_detector_ros_node.py" output="screen" >
    
+        <remap from="robot_pose" to="/robot_sim/robot_pose"/> 
+
+        <remap from="obstacles_static" to="/obstacles_static"/>
+        <remap from="obstacles_dynamic" to="/obstacles_dynamic"/>
+
+        <remap from="obstacles_detected" to="/obstacles_detected"/>
+    
+      </node>
+     
+    </group>
+
   </group>
 
 </launch>

@@ -1,13 +1,22 @@
 <!-- -->
 <launch>
 
+  <arg name="flag_use_state_estim" default="False" />
+
+  <arg name="topic_robot_pose" value="/robot_sim/robot_pose" if="$(eval flag_use_state_estim == False)"/>
+  <arg name="topic_robot_pose" value="/estim_robot_pose" if="$(eval flag_use_state_estim == True)"/>
+
+  <arg name="topic_robot_velocity_world" value="/robot_sim/robot_velocity_world" if="$(eval flag_use_state_estim == False)"/>
+  <arg name="topic_robot_velocity_world" value="/estim_robot_velocity_world" if="$(eval flag_use_state_estim == True)"/>
+
+
   <group ns="motion_controller">
 
     <node name="ars_motion_controller_node" pkg="ars_motion_controller" type="ars_motion_controller_ros_node.py" output="screen" >
       <remap from="robot_cmd" to="/robot_cmd"/>
   
-      <remap from="robot_pose" to="/robot_sim/robot_pose"/>
-      <remap from="robot_velocity_world" to="/robot_sim/robot_velocity_world"/>
+      <remap from="robot_pose" to="$(arg topic_robot_pose)"/>
+      <remap from="robot_velocity_world" to="$(arg topic_robot_velocity_world)"/>
 
       <remap from="robot_pose_ref" to="/robot_pose_ref"/>
       <remap from="robot_velocity_world_ref" to="/robot_velocity_world_ref"/>

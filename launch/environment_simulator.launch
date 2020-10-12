@@ -1,15 +1,19 @@
 <!-- -->
 <launch>
 
-  <group ns="environment_simulator">
+  <group ns="simulator">
 
-    <node name="ars_sim_environment_node" pkg="ars_sim_environment" type="ars_sim_environment_ros_node.py" output="screen" >
- 
-      <remap from="obstacles_static" to="/obstacles_static"/>
-      <remap from="obstacles_dynamic" to="/obstacles_dynamic"/>
-  
-    </node>
+    <group ns="sim_environment">
+
+      <node name="ars_sim_environment_node" pkg="ars_sim_environment" type="ars_sim_environment_ros_node.py" output="screen" >
+   
+        <remap from="obstacles_static" to="/obstacles_static"/>
+        <remap from="obstacles_dynamic" to="/obstacles_dynamic"/>
     
+      </node>
+      
+    </group>
+
   </group>
 
 </launch>
