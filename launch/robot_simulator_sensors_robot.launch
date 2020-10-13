@@ -5,7 +5,7 @@
 
     <group ns="sim_sensors_robot">
 
-      <node pkg="ars_sim_sensor_pos_robot" type="ars_sim_sensor_pos_robot_ros_node.py" name="ars_sim_sensor_pos_robot_node" output="screen">
+      <node pkg="ars_sim_sensors_robot" type="ars_sim_sensor_pos_robot_ros_node.py" name="ars_sim_sensor_pos_robot_node" output="screen">
 
         <remap from="robot_pose" to="/robot_sim/robot_pose"/>
 
@@ -14,8 +14,23 @@
 
       </node>
 
+      <node pkg="ars_sim_sensors_robot" type="ars_sim_sensor_posi_robot_ros_node.py" name="ars_sim_sensor_posi_robot_node" output="screen">
 
-      <node pkg="ars_sim_sensor_vel_robot" type="ars_sim_sensor_vel_robot_ros_node.py" name="ars_sim_sensor_vel_robot_node" output="screen">
+        <remap from="robot_pose" to="/robot_sim/robot_pose"/>
+
+        <remap from="meas_robot_position" to="/meas_robot_position"/>
+
+      </node>
+
+      <node pkg="ars_sim_sensors_robot" type="ars_sim_sensor_atti_robot_ros_node.py" name="ars_sim_sensor_atti_robot_node" output="screen">
+
+        <remap from="robot_pose" to="/robot_sim/robot_pose"/>
+
+        <remap from="meas_robot_attitude" to="/meas_robot_attitude"/>
+
+      </node>
+
+      <node pkg="ars_sim_sensors_robot" type="ars_sim_sensor_vel_robot_ros_node.py" name="ars_sim_sensor_vel_robot_node" output="screen">
 
         <remap from="robot_velocity" to="/robot_sim/robot_velocity_robot"/>
 

@@ -5,8 +5,9 @@
 
     <node name="ars_msf_state_estimator_node" pkg="ars_msf_state_estimator" type="ars_msf_state_estimator_ros_node.py" output="screen" >
 
-      <remap from="meas_robot_pose" to="/meas_robot_pose_cov"/>
-      <remap from="meas_robot_velocity_robot" to="/meas_robot_velocity_robot_cov"/>
+      <remap from="meas_robot_position" to="/meas_robot_position"/>
+      <remap from="meas_robot_attitude" to="/meas_robot_attitude"/>
+      <remap from="meas_robot_velocity_robot" to="/meas_robot_velocity_robot"/>
 
   
       <remap from="estim_robot_pose" to="/estim_robot_pose"/>
