@@ -1,6 +1,8 @@
 <!-- -->
 <launch>
 
+  <arg name="environment_description_yaml_file" default="$(find ars_config)/config/environment/obstacles_env_01.yaml"/>
+
   <group ns="simulator">
 
     <group ns="sim_environment">
@@ -9,6 +11,8 @@
    
         <remap from="obstacles_static" to="/obstacles_static"/>
         <remap from="obstacles_dynamic" to="/obstacles_dynamic"/>
+
+        <param name="environment_description_yaml_file" value="$(arg environment_description_yaml_file)" />
     
       </node>
       
