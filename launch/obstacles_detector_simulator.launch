@@ -13,6 +13,7 @@
         <remap from="obstacles_dynamic" to="/obstacles_dynamic"/>
 
         <remap from="obstacles_detected" to="/obstacles_detected"/>
+        <remap from="obstacles_detected_robot" to="/obstacles_detected_robot"/>
     
       </node>
      

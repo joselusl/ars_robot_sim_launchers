@@ -25,6 +25,12 @@ roslaunch ars_launchers robot_simulator.launch
 
 # Simulator environment
 roslaunch ars_launchers environment_simulator.launch
+# Env 00 - Default
+roslaunch ars_launchers environment_simulator.launch environment_description_yaml_file:="$(rospack find ars_config)/config/environment/obstacles_env_01.yaml"
+# Env 01
+roslaunch ars_launchers environment_simulator.launch environment_description_yaml_file:="$(rospack find ars_config)/config/environment/obstacles_env_01.yaml"
+# Env 02
+roslaunch ars_launchers environment_simulator.launch environment_description_yaml_file:="$(rospack find ars_config)/config/environment/obstacles_env_02.yaml"
 
 # Simulator collision detection
 roslaunch ars_launchers collision_detection_simulator.launch
