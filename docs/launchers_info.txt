@@ -68,6 +68,9 @@ roslaunch ars_launchers robot_obstacle_avoidance.launch flag_use_state_estim:=Tr
 # Sensor fusion State estimator
 roslaunch ars_launchers robot_msf_state_estimator.launch
 
+# Sensor fusion SLAM
+roslaunch ars_launchers robot_msf_slam.launch
+
 
 
 # Path publisher
