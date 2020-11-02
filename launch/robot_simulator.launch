@@ -13,6 +13,9 @@
         <remap from="robot_velocity_world" to="/robot_sim/robot_velocity_world"/>
         <remap from="robot_velocity_robot" to="/robot_sim/robot_velocity_robot"/>
 
+        <remap from="robot_acceleration_world" to="/robot_sim/robot_acceleration_world"/>
+        <remap from="robot_acceleration_robot" to="/robot_sim/robot_acceleration_robot"/>
+
         <remap from="robot_collision" to="robot_collision"/>
 
       </node>
