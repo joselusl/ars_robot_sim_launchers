@@ -45,11 +45,17 @@ roslaunch ars_launchers robot_simulator_sensors_robot.launch
 # Remote controller
 # TODO
 
-# Motion controller
+# Motion controller - OLD
 # Without state estimator
-roslaunch ars_launchers robot_motion_controller.launch
+roslaunch ars_launchers robot_motion_controller.launch robot_cmd_ctr:=/robot_cmd
 # With state estimator
-roslaunch ars_launchers robot_motion_controller.launch flag_use_state_estim:=True
+roslaunch ars_launchers robot_motion_controller.launch robot_cmd_ctr:=/robot_cmd flag_use_state_estim:=True
+
+# Motion controller - NEW
+# Without state estimator
+roslaunch ars_launchers robot_motion_controller.launch robot_cmd_ctr_stamped:=/robot_cmd_ctr_stamped robot_cmd_ctr:=/robot_cmd_ctr
+# With state estimator
+roslaunch ars_launchers robot_motion_controller.launch robot_cmd_ctr_stamped:=/robot_cmd_ctr_stamped robot_cmd_ctr:=/robot_cmd_ctr flag_use_state_estim:=True
 
 # Path follower
 # Without state estimator
@@ -57,7 +63,10 @@ roslaunch ars_launchers robot_path_follower.launch
 # With state estimator
 roslaunch ars_launchers robot_path_follower.launch flag_use_state_estim:=True
 
-# Reactive Collision-free trajectory planner (reactive obstacle avoidance)
+# Reactive obstacle avoidance - NEW
+roslaunch ars_launchers robot_obstacle_avoidance_react.launch robot_cmd_raw_stamped:=/robot_cmd_ctr_stamped
+
+# Deliverative Collision-free trajectory re-planner (deliberative obstacle avoidance) - OLD
 # Dummy
 rosrun topic_tools relay /robot_trajectory_ref /collis_free_robot_trajectory_ref
 # Real - Without state estimator
