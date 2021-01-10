@@ -49,7 +49,10 @@ roslaunch ars_launchers robot_simulator_sensors_robot.launch
 
 
 # Remote controller
-# TODO
+# To drone
+roslaunch ars_launchers robot_remote_controller.launch robot_cmd_stamped:=/robot_cmd_stamped
+# To obst avoidance
+roslaunch ars_launchers robot_remote_controller.launch robot_cmd_stamped:=/robot_cmd_ctr_stamped
 
 
 # Motion controller - OLD
