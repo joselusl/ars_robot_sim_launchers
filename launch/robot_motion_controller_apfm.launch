@@ -3,7 +3,7 @@
 
   <arg name="flag_use_state_estim" default="False" />
 
-  <arg name="topic_robot_pose" value="/robot_sim/robot_pose" if="$(eval flag_use_state_estim == False)"/>
+  <arg name="topic_robot_pose" value="/simulator/sim_robot/robot_pose" if="$(eval flag_use_state_estim == False)"/>
   <arg name="topic_robot_pose" value="/estim_robot_pose" if="$(eval flag_use_state_estim == True)"/>
   
   <arg name="robot_cmd_ctr_stamped" default="/robot_cmd_ctr_stamped" />

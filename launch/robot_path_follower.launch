@@ -3,17 +3,17 @@
 
   <arg name="flag_use_state_estim" default="False" />
 
-  <arg name="topic_robot_pose" value="/robot_sim/robot_pose" if="$(eval flag_use_state_estim == False)"/>
+  <arg name="topic_robot_pose" value="/simulator/sim_robot/robot_pose" if="$(eval flag_use_state_estim == False)"/>
   <arg name="topic_robot_pose" value="/estim_robot_pose" if="$(eval flag_use_state_estim == True)"/>
 
-  <arg name="topic_robot_velocity_world" value="/robot_sim/robot_velocity_world" if="$(eval flag_use_state_estim == False)"/>
+  <arg name="topic_robot_velocity_world" value="/simulator/sim_robot/robot_velocity_world" if="$(eval flag_use_state_estim == False)"/>
   <arg name="topic_robot_velocity_world" value="/estim_robot_velocity_world" if="$(eval flag_use_state_estim == True)"/>
 
 
   <group ns="path_follower">
 
     <node name="ars_path_follower_node" pkg="ars_path_follower" type="ars_path_follower_ros_node.py" output="screen" >
-      <remap from="robot_trajectory_ref" to="/collis_free_robot_trajectory_ref"/>
+      <remap from="robot_trajectory_ref" to="/robot_trajectory_ref"/>
   
       <remap from="robot_pose" to="$(arg topic_robot_pose)"/>
       <remap from="robot_velocity_world" to="$(arg topic_robot_velocity_world)"/>
