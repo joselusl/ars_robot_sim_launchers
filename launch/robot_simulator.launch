@@ -7,15 +7,15 @@
 
       <node pkg="ars_sim_robot" type="ars_sim_robot_ros_node.py" name="ars_sim_robot_node" output="screen">
 
-        <remap from="robot_cmd" to="/robot_cmd"/>
+        <remap from="robot_cmd" to="/robot_cmd_unstamped"/>
         <remap from="robot_cmd_stamped" to="/robot_cmd_stamped"/>
 
-        <remap from="robot_pose" to="/robot_sim/robot_pose"/>
-        <remap from="robot_velocity_world" to="/robot_sim/robot_velocity_world"/>
-        <remap from="robot_velocity_robot" to="/robot_sim/robot_velocity_robot"/>
+        <remap from="robot_pose" to="robot_pose"/>
+        <remap from="robot_velocity_world" to="robot_velocity_world"/>
+        <remap from="robot_velocity_robot" to="robot_velocity_robot"/>
 
-        <remap from="robot_acceleration_world" to="/robot_sim/robot_acceleration_world"/>
-        <remap from="robot_acceleration_robot" to="/robot_sim/robot_acceleration_robot"/>
+        <remap from="robot_acceleration_world" to="robot_acceleration_world"/>
+        <remap from="robot_acceleration_robot" to="robot_acceleration_robot"/>
 
         <remap from="robot_collision" to="robot_collision"/>
 

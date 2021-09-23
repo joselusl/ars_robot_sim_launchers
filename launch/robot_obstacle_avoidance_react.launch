@@ -1,7 +1,7 @@
 <!-- -->
 <launch>
 
-  <arg name="robot_cmd_raw_stamped" default="/robot_cmd_raw_stamped" />
+  <arg name="robot_cmd_raw_stamped" default="/robot_cmd_ctr_stamped" />
   
   <arg name="obstacles_detected" default="/obstacles_detected_robot" />
   

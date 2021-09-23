@@ -19,7 +19,7 @@ rosrun rviz rviz -d $(rospack find ars_config)/config/rviz_config/rviz_conf_sim.
 
 
 # Robot urdf model for visualization (optional)
-roslaunch ars_robot_models robot_urdf.launch
+roslaunch ars_launchers robot_urdf.launch
 
 
 
@@ -84,7 +84,7 @@ roslaunch ars_launchers robot_path_follower.launch flag_use_state_estim:=True
 
 
 # Reactive obstacle avoidance - NEW
-roslaunch ars_launchers robot_obstacle_avoidance_react.launch robot_cmd_raw_stamped:=/robot_cmd_ctr_stamped
+roslaunch ars_launchers robot_obstacle_avoidance_react.launch
 
 
 # Deliverative Collision-free trajectory re-planner (deliberative obstacle avoidance) - OLD

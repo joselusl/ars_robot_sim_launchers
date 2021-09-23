@@ -1,0 +1,26 @@
+<!-- -->
+<launch>
+
+
+  <arg name="robot_description_path"       default="$(find ars_robot_models)/urdf/dji.urdf" />
+
+
+  <group ns="simulator">
+
+    <group ns="sim_robot">
+
+    <!-- Aerial robot -->
+
+    <!--<param name="robot_description" textfile="$(arg robot_description_path)" />-->
+
+      <param name="robot_description" textfile="$(arg robot_description_path)" />
+      <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher">
+      </node>
+        <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher">
+      </node>
+
+    </group>
+
+  </group>
+
+</launch>

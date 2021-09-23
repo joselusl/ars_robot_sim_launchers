@@ -7,12 +7,12 @@
 
       <node name="ars_sim_obstacles_detector_node" pkg="ars_sim_obstacles_detector" type="ars_sim_obstacles_detector_ros_node.py" output="screen" >
    
-        <remap from="robot_pose" to="/robot_sim/robot_pose"/> 
+        <remap from="robot_pose" to="/simulator/sim_robot/robot_pose"/> 
 
-        <remap from="obstacles_static" to="/obstacles_static"/>
-        <remap from="obstacles_dynamic" to="/obstacles_dynamic"/>
+        <remap from="obstacles_static" to="/simulator/sim_environment/obstacles_static"/>
+        <remap from="obstacles_dynamic" to="/simulator/sim_environment/obstacles_dynamic"/>
 
-        <remap from="obstacles_detected" to="/obstacles_detected"/>
+        <remap from="obstacles_detected_world" to="/obstacles_detected_world"/>
         <remap from="obstacles_detected_robot" to="/obstacles_detected_robot"/>
     
       </node>
