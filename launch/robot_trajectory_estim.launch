@@ -1,0 +1,13 @@
+<!-- -->
+<launch>
+
+  <!-- http://wiki.ros.org/hector_trajectory_server -->
+  <node pkg="hector_trajectory_server" type="hector_trajectory_server" name="hector_trajectory_server_estim" output="screen">
+    <remap from="trajectory" to="robot_trajectory_estim"/>
+    <param name="target_frame_name" type="string" value="world" />
+    <param name="source_frame_name" type="string" value="robot_estim_base_link" />
+    <param name="trajectory_update_rate" type="double" value="30" />
+    <param name="trajectory_publish_rate" type="double" value="20" />
+  </node>
+
+</launch>
