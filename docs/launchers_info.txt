@@ -76,6 +76,13 @@ roslaunch ars_launchers robot_motion_controller_apfm.launch robot_cmd_ctr_stampe
 roslaunch ars_launchers robot_motion_controller_apfm.launch robot_cmd_ctr_stamped:=/robot_cmd_ctr_stamped flag_use_state_estim:=True
 
 
+# Motion controller PID - NEW
+# Without state estimator
+roslaunch ars_launchers robot_motion_controller_pid.launch robot_cmd_ctr_stamped:=/robot_cmd_ctr_stamped robot_cmd_ctr:=/robot_cmd_ctr
+# With state estimator
+roslaunch ars_launchers robot_motion_controller_pid.launch robot_cmd_ctr_stamped:=/robot_cmd_ctr_stamped robot_cmd_ctr:=/robot_cmd_ctr flag_use_state_estim:=True
+
+
 # Path follower
 # Without state estimator
 roslaunch ars_launchers robot_path_follower.launch
