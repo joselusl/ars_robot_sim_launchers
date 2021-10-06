@@ -55,6 +55,12 @@ roslaunch ars_launchers robot_remote_controller.launch robot_cmd_stamped:=/robot
 roslaunch ars_launchers robot_remote_controller.launch robot_cmd_stamped:=/robot_cmd_ctr_stamped
 
 
+
+# Reactive obstacle avoidance - NEW
+roslaunch ars_launchers robot_obstacle_avoidance_react.launch
+
+
+
 # Motion controller - OLD
 # Without state estimator
 roslaunch ars_launchers robot_motion_controller.launch robot_cmd_ctr:=/robot_cmd
@@ -78,9 +84,10 @@ roslaunch ars_launchers robot_motion_controller_apfm.launch robot_cmd_ctr_stampe
 
 # Motion controller PID - NEW
 # Without state estimator
-roslaunch ars_launchers robot_motion_controller_pid.launch robot_cmd_ctr_stamped:=/robot_cmd_ctr_stamped robot_cmd_ctr:=/robot_cmd_ctr
+roslaunch ars_launchers robot_motion_controller_pid.launch robot_cmd_ctr_stamped:=/robot_cmd_ctr_stamped robot_cmd_ctr:=/robot_cmd_ctr flag_use_state_estim:=False
 # With state estimator
 roslaunch ars_launchers robot_motion_controller_pid.launch robot_cmd_ctr_stamped:=/robot_cmd_ctr_stamped robot_cmd_ctr:=/robot_cmd_ctr flag_use_state_estim:=True
+
 
 
 # Path follower
@@ -89,9 +96,6 @@ roslaunch ars_launchers robot_path_follower.launch
 # With state estimator
 roslaunch ars_launchers robot_path_follower.launch flag_use_state_estim:=True
 
-
-# Reactive obstacle avoidance - NEW
-roslaunch ars_launchers robot_obstacle_avoidance_react.launch
 
 
 # Deliverative Collision-free trajectory re-planner (deliberative obstacle avoidance) - OLD
