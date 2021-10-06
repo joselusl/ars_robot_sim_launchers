@@ -28,6 +28,8 @@ roslaunch ars_launchers robot_simulator.launch
 
 # Simulator environment
 roslaunch ars_launchers environment_simulator.launch
+# Env empty
+roslaunch ars_launchers environment_simulator.launch environment_description_yaml_file:="$(rospack find ars_config)/config/environment/obstacles_env_empty.yaml"
 # Env 00 - Default
 roslaunch ars_launchers environment_simulator.launch environment_description_yaml_file:="$(rospack find ars_config)/config/environment/obstacles_env_00.yaml"
 # Env 01
