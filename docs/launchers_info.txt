@@ -38,6 +38,8 @@ roslaunch ars_launchers environment_simulator.launch environment_description_yam
 roslaunch ars_launchers environment_simulator.launch environment_description_yaml_file:="$(rospack find ars_config)/config/environment/obstacles_env_02.yaml"
 # Env 03
 roslaunch ars_launchers environment_simulator.launch environment_description_yaml_file:="$(rospack find ars_config)/config/environment/obstacles_env_03.yaml"
+# Env 04
+roslaunch ars_launchers environment_simulator.launch environment_description_yaml_file:="$(rospack find ars_config)/config/environment/obstacles_env_04.yaml"
 
 # Simulator collision detection
 roslaunch ars_launchers collision_detection_simulator.launch
