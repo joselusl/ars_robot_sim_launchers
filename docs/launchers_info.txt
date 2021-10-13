@@ -102,6 +102,19 @@ roslaunch ars_launchers robot_path_follower.launch flag_use_state_estim:=True
 
 
 
+# Environment map (relay)
+roslaunch ars_launchers environment_map.launch
+
+
+# Path planner
+# Without state estimator
+roslaunch ars_launchers robot_path_planner.launch
+# With state estimator
+roslaunch ars_launchers robot_path_planner.launch flag_use_state_estim:=True
+
+
+
+
 # Deliverative Collision-free trajectory re-planner (deliberative obstacle avoidance) - OLD
 # Dummy
 rosrun topic_tools relay /robot_trajectory_ref /collis_free_robot_trajectory_ref
@@ -129,7 +142,8 @@ bash $ARS_PROJECT/scripts/publish_path_01.sh
 bash $ARS_PROJECT/scripts/publish_path_02.sh
 #
 bash $ARS_PROJECT/scripts/publish_path_03.sh
-
+#
+bash $ARS_PROJECT/scripts/publish_path_07.sh
 
 
 # Remove obstacles dynamic

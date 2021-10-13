@@ -1,0 +1,24 @@
+<!-- -->
+<launch>
+
+  <arg name="flag_use_state_estim" default="False" />
+
+  <arg name="topic_robot_pose" value="/simulator/sim_robot/robot_pose" if="$(eval flag_use_state_estim == False)"/>
+  <arg name="topic_robot_pose" value="/estim_robot_pose" if="$(eval flag_use_state_estim == True)"/>
+
+
+  <group ns="path_planner">
+
+    <node name="ars_path_planner_node" pkg="ars_path_planner" type="ars_path_planner_ros_node.py" output="screen" >
+      <remap from="robot_pose_des" to="/robot_pose_des"/>      
+
+      <remap from="robot_pose" to="$(arg topic_robot_pose)"/>
+      <remap from="obstacles_world" to="/obstacles_world"/>
+
+      <remap from="robot_trajectory_ref" to="/robot_trajectory_ref"/>
+
+    </node>
+    
+  </group>
+
+</launch>
