@@ -52,6 +52,15 @@ roslaunch ars_launchers robot_simulator_sensors_robot.launch
 
 
 
+# Environment static map (relay) - no
+roslaunch ars_launchers environment_map.launch
+
+
+# Environment mapper simulator
+roslaunch ars_launchers mapper_simulator.launch
+
+
+
 # Remote controller
 # To drone
 roslaunch ars_launchers robot_remote_controller.launch robot_cmd_stamped:=/robot_cmd_stamped
@@ -100,10 +109,6 @@ roslaunch ars_launchers robot_path_follower.launch
 # With state estimator
 roslaunch ars_launchers robot_path_follower.launch flag_use_state_estim:=True
 
-
-
-# Environment map (relay)
-roslaunch ars_launchers environment_map.launch
 
 
 # Path planner

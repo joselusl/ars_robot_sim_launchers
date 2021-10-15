@@ -13,9 +13,10 @@
       <remap from="robot_pose_des" to="/robot_pose_des"/>      
 
       <remap from="robot_pose" to="$(arg topic_robot_pose)"/>
-      <remap from="obstacles_world" to="/obstacles_world"/>
+      <remap from="obstacles_world" to="/estim_map_world"/>
 
       <remap from="robot_trajectory_ref" to="/robot_trajectory_ref"/>
+      <remap from="robot_trajectory_ref_raw" to="/robot_trajectory_ref_raw"/>
 
     </node>
     
