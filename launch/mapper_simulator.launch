@@ -10,7 +10,7 @@
         <remap from="obstacles_static" to="/simulator/sim_environment/obstacles_static"/>
         <remap from="obstacles_dynamic" to="/simulator/sim_environment/obstacles_dynamic"/>
 
-        <remap from="estim_map_world" to="/estim_map_world"/>
+        <remap from="estim_map_world" to="/estim_map_world_sim"/>
     
       </node>
      
