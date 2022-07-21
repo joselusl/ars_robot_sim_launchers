@@ -156,3 +156,11 @@ rostopic pub -1 /simulator/sim_environment/flag_dynamic_obstacles std_msgs/Bool 
 # Add obstacles dynamic
 rostopic pub -1 /simulator/sim_environment/flag_dynamic_obstacles std_msgs/Bool "data: true"
 
+
+# For real experiments
+# Master
+export ROS_MASTER_URI=http://192.168.30.106:11311
+export ROS_IP=192.168.30.106
+# Own
+export ROS_HOSTNAME=192.168.30.107
+
