@@ -70,12 +70,9 @@ roslaunch ars_launchers robot_simulator_sensors_robot.launch
 
 
 
-# Environment static map (relay) - no
-roslaunch ars_launchers environment_map.launch
-
-
 # Environment mapper simulator
 roslaunch ars_launchers mapper_simulator.launch
+
 
 
 
@@ -108,27 +105,6 @@ roslaunch ars_launchers robot_obstacle_avoidance_react.launch
 
 
 
-# Motion controller - OLD
-# Without state estimator
-roslaunch ars_launchers robot_motion_controller.launch robot_cmd_ctr:=/robot_cmd
-# With state estimator
-roslaunch ars_launchers robot_motion_controller.launch robot_cmd_ctr:=/robot_cmd flag_use_state_estim:=True
-
-
-# Motion controller - NEW
-# Without state estimator
-roslaunch ars_launchers robot_motion_controller.launch robot_cmd_ctr_stamped:=/robot_cmd_ctr_stamped robot_cmd_ctr:=/robot_cmd_ctr
-# With state estimator
-roslaunch ars_launchers robot_motion_controller.launch robot_cmd_ctr_stamped:=/robot_cmd_ctr_stamped robot_cmd_ctr:=/robot_cmd_ctr flag_use_state_estim:=True
-
-
-# Motion controller APFM - NEW
-# Without state estimator
-roslaunch ars_launchers robot_motion_controller_apfm.launch robot_cmd_ctr_stamped:=/robot_cmd_ctr_stamped
-# With state estimator
-roslaunch ars_launchers robot_motion_controller_apfm.launch robot_cmd_ctr_stamped:=/robot_cmd_ctr_stamped flag_use_state_estim:=True
-
-
 # Motion controller PID - NEW
 # Without state estimator
 roslaunch ars_launchers robot_motion_controller_pid.launch robot_cmd_ctr_stamped:=/robot_cmd_ctr_stamped robot_cmd_ctr:=/robot_cmd_ctr flag_use_state_estim:=False
@@ -153,17 +129,6 @@ roslaunch ars_launchers robot_path_planner.launch flag_use_state_estim:=True
 
 
 
-
-# Deliverative Collision-free trajectory re-planner (deliberative obstacle avoidance) - OLD
-# Dummy
-rosrun topic_tools relay /robot_trajectory_ref /collis_free_robot_trajectory_ref
-# Real - Without state estimator
-roslaunch ars_launchers robot_obstacle_avoidance.launch
-# Real - With state estimator
-roslaunch ars_launchers robot_obstacle_avoidance.launch flag_use_state_estim:=True
-
-
-
 # Sensor fusion State estimator
 roslaunch ars_launchers robot_msf_state_estimator.launch
 
@@ -171,6 +136,8 @@ roslaunch ars_launchers robot_msf_state_estimator.launch
 
 # Sensor fusion SLAM
 roslaunch ars_launchers robot_msf_slam.launch
+
+
 
 
 
