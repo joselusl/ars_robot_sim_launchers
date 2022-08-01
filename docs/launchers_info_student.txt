@@ -1,0 +1,163 @@
+# source
+source $ARS_CATKIN_WORKSPACE/devel/setup.bash
+
+# compile
+catkin build
+
+# clean
+catkin clean
+
+# ros master
+roscore
+
+
+# rqt tools
+rqt
+rqt_graph
+rqt_plot
+
+
+
+## VISUALIZATION
+
+# rviz for visualization
+# config by default
+rviz
+# with ars config
+rosrun rviz rviz -d $(rospack find ars_config)/config/rviz_config/rviz_conf_sim.rviz
+
+
+
+# Robot urdf model for visualization (optional)
+roslaunch ars_launchers robot_urdf.launch
+
+
+# Trajectory record for visualization (optional)
+roslaunch ars_launchers robot_trajectory.launch
+
+
+
+
+## SIMULATOR
+
+# Simulator robot 
+roslaunch ars_launchers robot_simulator.launch
+
+# Simulator environment
+roslaunch ars_launchers environment_simulator.launch
+# Env empty
+roslaunch ars_launchers environment_simulator.launch environment_description_yaml_file:="$(rospack find ars_config)/config/environment/obstacles_env_empty.yaml"
+# Env 00 - Default
+roslaunch ars_launchers environment_simulator.launch environment_description_yaml_file:="$(rospack find ars_config)/config/environment/obstacles_env_00.yaml"
+# Env 01
+roslaunch ars_launchers environment_simulator.launch environment_description_yaml_file:="$(rospack find ars_config)/config/environment/obstacles_env_01.yaml"
+# Env 02
+roslaunch ars_launchers environment_simulator.launch environment_description_yaml_file:="$(rospack find ars_config)/config/environment/obstacles_env_02.yaml"
+# Env 03
+roslaunch ars_launchers environment_simulator.launch environment_description_yaml_file:="$(rospack find ars_config)/config/environment/obstacles_env_03.yaml"
+# Env 04
+roslaunch ars_launchers environment_simulator.launch environment_description_yaml_file:="$(rospack find ars_config)/config/environment/obstacles_env_04.yaml"
+
+# Simulator collision detection
+roslaunch ars_launchers collision_detection_simulator.launch
+
+
+# Sim obstacle detector
+roslaunch ars_launchers obstacles_detector_simulator.launch
+
+# Simulator robot sensors
+roslaunch ars_launchers robot_simulator_sensors_robot.launch
+
+
+# Environment mapper simulator
+roslaunch ars_launchers mapper_simulator.launch
+
+
+
+
+## REAL EXPERIMENTS
+
+# Config or real experiments
+# Master IP
+export ROS_MASTER_URI=http://192.168.30.106:11311
+export ROS_IP=192.168.30.106
+# Own IP
+export ROS_HOSTNAME=192.168.30.107
+
+
+
+
+
+## ROBOT INTELLIGENCE - COMPONENTS
+
+# Remote controller
+# To drone
+roslaunch ars_launchers robot_remote_controller.launch robot_cmd_stamped:=/robot_cmd_stamped
+# To obst avoidance
+roslaunch ars_launchers robot_remote_controller.launch robot_cmd_stamped:=/robot_cmd_ctr_stamped
+
+
+
+# Reactive obstacle avoidance - NEW
+roslaunch ars_launchers robot_obstacle_avoidance_react.launch
+
+
+
+# Motion controller PID - NEW
+# Without state estimator
+roslaunch ars_launchers robot_motion_controller_pid.launch robot_cmd_ctr_stamped:=/robot_cmd_ctr_stamped robot_cmd_ctr:=/robot_cmd_ctr flag_use_state_estim:=False
+# With state estimator
+roslaunch ars_launchers robot_motion_controller_pid.launch robot_cmd_ctr_stamped:=/robot_cmd_ctr_stamped robot_cmd_ctr:=/robot_cmd_ctr flag_use_state_estim:=True
+
+
+
+# Path follower
+# Without state estimator
+roslaunch ars_launchers robot_path_follower.launch
+# With state estimator
+roslaunch ars_launchers robot_path_follower.launch flag_use_state_estim:=True
+
+
+
+# Path planner
+# Without state estimator
+roslaunch ars_launchers robot_path_planner.launch
+# With state estimator
+roslaunch ars_launchers robot_path_planner.launch flag_use_state_estim:=True
+
+
+
+# Sensor fusion State estimator
+roslaunch ars_launchers robot_msf_state_estimator.launch
+
+
+
+# Sensor fusion SLAM
+roslaunch ars_launchers robot_msf_slam.launch
+
+
+
+
+## INPUTS
+
+# Path publisher
+#
+bash $ARS_PROJECT/scripts/publish_path_empty.sh
+#
+bash $ARS_PROJECT/scripts/publish_path_01.sh
+#
+bash $ARS_PROJECT/scripts/publish_path_02.sh
+#
+bash $ARS_PROJECT/scripts/publish_path_03.sh
+#
+bash $ARS_PROJECT/scripts/publish_path_07.sh
+
+
+
+# Remove obstacles dynamic
+rostopic pub -1 /simulator/sim_environment/flag_dynamic_obstacles std_msgs/Bool "data: false"
+# Add obstacles dynamic
+rostopic pub -1 /simulator/sim_environment/flag_dynamic_obstacles std_msgs/Bool "data: true"
+
+
+

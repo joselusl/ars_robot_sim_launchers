@@ -11,8 +11,18 @@ catkin clean
 roscore
 
 
+# rqt tools
+rqt
+rqt_graph
+rqt_plot
+
+
+
+## VISUALIZATION
 
 # rviz for visualization
+# config by default
+rviz
 # with ars config
 rosrun rviz rviz -d $(rospack find ars_config)/config/rviz_config/rviz_conf_sim.rviz
 
@@ -22,6 +32,13 @@ rosrun rviz rviz -d $(rospack find ars_config)/config/rviz_config/rviz_conf_sim.
 roslaunch ars_launchers robot_urdf.launch
 
 
+# Trajectory record for visualization (optional)
+roslaunch ars_launchers robot_trajectory.launch
+
+
+
+
+## SIMULATOR
 
 # Simulator robot 
 roslaunch ars_launchers robot_simulator.launch
@@ -44,10 +61,11 @@ roslaunch ars_launchers environment_simulator.launch environment_description_yam
 # Simulator collision detection
 roslaunch ars_launchers collision_detection_simulator.launch
 
+
 # Sim obstacle detector
 roslaunch ars_launchers obstacles_detector_simulator.launch
 
-# Robot sensors
+# Simulator robot sensors
 roslaunch ars_launchers robot_simulator_sensors_robot.launch
 
 
@@ -60,6 +78,22 @@ roslaunch ars_launchers environment_map.launch
 roslaunch ars_launchers mapper_simulator.launch
 
 
+
+
+## REAL EXPERIMENTS
+
+# Config or real experiments
+# Master IP
+export ROS_MASTER_URI=http://192.168.30.106:11311
+export ROS_IP=192.168.30.106
+# Own IP
+export ROS_HOSTNAME=192.168.30.107
+
+
+
+
+
+## ROBOT INTELLIGENCE - COMPONENTS
 
 # Remote controller
 # To drone
@@ -129,14 +163,19 @@ roslaunch ars_launchers robot_obstacle_avoidance.launch
 roslaunch ars_launchers robot_obstacle_avoidance.launch flag_use_state_estim:=True
 
 
+
 # Sensor fusion State estimator
 roslaunch ars_launchers robot_msf_state_estimator.launch
+
 
 
 # Sensor fusion SLAM
 roslaunch ars_launchers robot_msf_slam.launch
 
 
+
+
+## INPUTS
 
 # Path publisher
 #
@@ -157,10 +196,4 @@ rostopic pub -1 /simulator/sim_environment/flag_dynamic_obstacles std_msgs/Bool 
 rostopic pub -1 /simulator/sim_environment/flag_dynamic_obstacles std_msgs/Bool "data: true"
 
 
-# For real experiments
-# Master
-export ROS_MASTER_URI=http://192.168.30.106:11311
-export ROS_IP=192.168.30.106
-# Own
-export ROS_HOSTNAME=192.168.30.107
 
