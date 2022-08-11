@@ -40,13 +40,13 @@ roslaunch ars_launchers robot_trajectory.launch
 
 
 
-## SIMULATOR
+## SIMULATED EXPERIMENTS
 
-# Simulator robot 
+# Simulator robot (if simulated experiment)
 roslaunch ars_launchers robot_simulator.launch
 
 
-# Simulator environment
+# Simulator environment (if simulated experiment)
 roslaunch ars_launchers environment_simulator.launch
 # Env empty
 roslaunch ars_launchers environment_simulator.launch environment_description_yaml_file:="$(rospack find ars_config)/config/sim_environment/obstacles_env_empty.yaml"
@@ -62,7 +62,46 @@ roslaunch ars_launchers environment_simulator.launch environment_description_yam
 roslaunch ars_launchers environment_simulator.launch environment_description_yaml_file:="$(rospack find ars_config)/config/sim_environment/obstacles_env_04.yaml"
 
 
-# Simulator collision detection
+
+
+## REAL EXPERIMENTS
+
+# Config for real experiments (if real experiment)
+# Master IP
+export ROS_MASTER_URI=http://192.168.30.106:11311
+export ROS_IP=192.168.30.106
+# Own IP
+export ROS_HOSTNAME=192.168.30.107
+
+
+# Optitrack node -> In External computer (if real experiment)
+# TODO
+
+
+# Optitrack transformation (if real experiment)
+
+# Obstacles static
+roslaunch ars_launchers optitrack_transf_environment_static.launch optitrack_transf_environment_description_yaml_file:="$(rospack find ars_config)/config/optitrack_transf/optitrack_transf_environment.yaml" obstacles_label:="static"
+
+# Obstacles dynamic
+roslaunch ars_launchers optitrack_transf_environment_dynamic.launch optitrack_transf_environment_description_yaml_file:="$(rospack find ars_config)/config/optitrack_transf/optitrack_transf_environment.yaml" obstacles_label:="dynamic"
+
+# Aerial Robot
+# TODO
+roslaunch ars_launchers optitrack_transf_robot.launch
+
+
+
+# DJI Tello driver (if real experiment)
+# TODO
+
+
+
+
+
+## SIMULATORS NEEDED FOR EXPERIMENTS (BOTH SIMULATED AND REAL)
+
+# Simulator collision detection (optional)
 roslaunch ars_launchers collision_detection_simulator.launch
 
 
@@ -75,41 +114,13 @@ roslaunch ars_launchers robot_simulator_sensors_robot.launch
 
 
 
-# Environment mapper simulator
+
+
+## SIMULATOR ROBOT INTELLIGENCE COMPONENTS
+
+# Environment mapper simulator (only if not SLAM)
 roslaunch ars_launchers mapper_simulator.launch
 
-
-
-
-
-## REAL EXPERIMENTS
-
-# Config for real experiments
-# Master IP
-export ROS_MASTER_URI=http://192.168.30.106:11311
-export ROS_IP=192.168.30.106
-# Own IP
-export ROS_HOSTNAME=192.168.30.107
-
-
-# Optitrack node -> In External computer
-# TODO
-
-
-# Optitrack transf
-
-# Obstacles static
-roslaunch ars_launchers optitrack_transf_environment_static.launch optitrack_transf_environment_description_yaml_file:="$(rospack find ars_config)/config/optitrack_transf/optitrack_transf_environment.yaml" obstacles_label:="static"
-
-# Obstacles dynamic
-roslaunch ars_launchers optitrack_transf_environment_dynamic.launch optitrack_transf_environment_description_yaml_file:="$(rospack find ars_config)/config/optitrack_transf/optitrack_transf_environment.yaml" obstacles_label:="dynamic"
-
-# Aerial Robot
-# TODO
-
-
-# DJI Tello driver
-# TODO
 
 
 
