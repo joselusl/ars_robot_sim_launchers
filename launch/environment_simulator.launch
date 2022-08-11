@@ -1,7 +1,7 @@
 <!-- -->
 <launch>
 
-  <arg name="environment_description_yaml_file" default="$(find ars_config)/config/environment/obstacles_env_00.yaml"/>
+  <arg name="environment_description_yaml_file" default="$(find ars_config)/config/sim_environment/obstacles_env_00.yaml"/>
 
   <group ns="simulator">
 
