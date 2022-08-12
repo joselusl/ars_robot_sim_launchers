@@ -3,21 +3,30 @@
 
 	<arg name="screen" 	default="screen" />
 	
-	<arg name="ars_optitrack_transf_environment_ros_node_name" 	default="ars_optitrack_transf_environment_dynamic_ros_node" />
-	
-  <arg name="optitrack_transf_environment_description_yaml_file" default="$(find ars_config)/config/optitrack_transf/optitrack_transf_environment.yaml"/>
-  <arg name="obstacles_label" default="dynamic"/>
+	<arg name="ars_optitrack_transf_robot_ros_node_name" 	default="ars_optitrack_transf_robot_ros_node" />
+
+  <arg name="meas_robot_frame" default="optitrack_robot_base_link"/>
+  <arg name="meas_world_frame" default="world"/>
+  
   
   <group ns="simulator">
 
-    <group ns="sim_environment">
+    <group ns="sim_robot">
 
-      <node name="$(arg ars_optitrack_transf_environment_ros_node_name)" pkg="ars_optitrack_transf" type="ars_optitrack_transf_environment_ros_node.py" output="$(arg screen)" >
+      <node name="$(arg ars_optitrack_transf_robot_ros_node_name)" pkg="ars_optitrack_transf" type="ars_optitrack_transf_robot_ros_node.py" output="$(arg screen)" >
+      
+        <param name="meas_robot_frame" value="$(arg meas_robot_frame)" />
+        <param name="meas_world_frame" value="$(arg meas_world_frame)" />
    
-        <remap from="obstacles" to="/simulator/sim_environment/obstacles_dynamic"/>
-
-        <param name="optitrack_transf_environment_description_yaml_file" value="$(arg optitrack_transf_environment_description_yaml_file)" />
-        <param name="obstacles_label" value="$(arg obstacles_label)" />
+        <remap from="estim_robot_pose" to="/simulator/sim_robot/robot_pose"/>
+        <remap from="estim_robot_pose_cov" to="/simulator/sim_robot/robot_pose_cov"/>
+        
+        <remap from="estim_robot_velocity_robot" to="/simulator/sim_robot/robot_velocity_robot"/>
+        <remap from="estim_robot_velocity_robot_cov" to="/simulator/sim_robot/robot_velocity_robot_cov"/>
+        
+        <remap from="estim_robot_velocity_world" to="/simulator/sim_robot/robot_velocity_world"/>
+        <remap from="estim_robot_velocity_world_cov" to="/simulator/sim_robot/robot_velocity_world_cov"/>
+        
     
       </node>
       

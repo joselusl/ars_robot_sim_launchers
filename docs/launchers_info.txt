@@ -87,8 +87,7 @@ roslaunch ars_launchers optitrack_transf_environment_static.launch optitrack_tra
 roslaunch ars_launchers optitrack_transf_environment_dynamic.launch optitrack_transf_environment_description_yaml_file:="$(rospack find ars_config)/config/optitrack_transf/optitrack_transf_environment.yaml" obstacles_label:="dynamic"
 
 # Aerial Robot
-# TODO
-roslaunch ars_launchers optitrack_transf_robot.launch
+roslaunch ars_launchers optitrack_transf_robot.launch meas_robot_frame:="optitrack_robot_base_link" meas_world_frame:="optitrack_world"
 
 
 
@@ -159,8 +158,10 @@ roslaunch ars_launchers robot_path_follower.launch flag_use_state_estim:=True
 # Path planner
 # Without state estimator
 roslaunch ars_launchers robot_path_planner.launch
-# With state estimator
+# With state estimator and mapper
 roslaunch ars_launchers robot_path_planner.launch flag_use_state_estim:=True
+# With state estimator and slam
+roslaunch ars_launchers robot_path_planner.launch flag_use_state_estim:=True flag_use_slam_map:=True
 
 
 
