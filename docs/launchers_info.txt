@@ -70,7 +70,7 @@ roslaunch ars_launchers environment_simulator.launch environment_description_yam
 # Master IP
 export ROS_MASTER_URI=http://192.168.30.106:11311
 export ROS_IP=192.168.30.106
-# Own IP
+# Own IP (check on your virtual machine)
 export ROS_HOSTNAME=192.168.30.107
 
 
@@ -92,7 +92,7 @@ roslaunch ars_launchers optitrack_transf_robot.launch meas_robot_frame:="optitra
 
 
 # DJI Tello driver (if real experiment)
-# TODO
+roslaunch ars_launchers dji_tello_driver_ros.launch connect_to_tello_wifi_auto:=False
 
 
 
