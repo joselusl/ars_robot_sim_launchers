@@ -18,32 +18,14 @@ rqt_plot
 
 
 
-## VISUALIZATION
-
-# rviz for visualization
-# config by default
-rviz
-# with ars config
-rosrun rviz rviz -d $(rospack find ars_config)/config/rviz_config/rviz_conf_sim.rviz
-
-
-# Robot urdf model for visualization (optional)
-# DJI M100
-roslaunch ars_launchers robot_urdf_dji_m100.launch
-# DJI Tello
-roslaunch ars_launchers robot_urdf_dji_tello.launch
-
-
-# Trajectory record for visualization (optional)
-roslaunch ars_launchers robot_trajectory.launch
-
-
-
 
 ## SIMULATED EXPERIMENTS
 
 # Simulator robot (if simulated experiment)
-roslaunch ars_launchers robot_simulator.launch
+# DJI M100
+roslaunch ars_launchers robot_simulator.launch robot_sim_description_yaml_file="$(rospack find ars_config)/config/sim_robot/config_sim_robot_dji_m100.yaml"
+# DJI Tello
+roslaunch ars_launchers robot_simulator.launch robot_sim_description_yaml_file="$(rospack find ars_config)/config/sim_robot/config_sim_robot_dji_m100.yaml"
 
 
 # Simulator environment (if simulated experiment)
@@ -115,10 +97,36 @@ roslaunch ars_launchers robot_simulator_sensors_robot.launch
 
 
 
+
+## VISUALIZATION
+
+# rviz for visualization
+# config by default
+rviz
+# with ars config
+rosrun rviz rviz -d $(rospack find ars_config)/config/rviz_config/rviz_conf_sim.rviz
+
+
+# Robot urdf model for visualization (optional)
+# DJI M100
+roslaunch ars_launchers robot_urdf_dji_m100.launch
+# DJI Tello
+roslaunch ars_launchers robot_urdf_dji_tello.launch
+
+
+# Trajectory record for visualization (optional)
+roslaunch ars_launchers robot_trajectory.launch
+
+
+
+
+
+
 ## SIMULATOR ROBOT INTELLIGENCE COMPONENTS
 
 # Environment mapper simulator (only if not SLAM)
 roslaunch ars_launchers mapper_simulator.launch
+
 
 
 
@@ -136,6 +144,16 @@ roslaunch ars_launchers robot_remote_controller.launch robot_cmd_stamped:=/robot
 
 # Reactive obstacle avoidance - NEW
 roslaunch ars_launchers robot_obstacle_avoidance_react.launch
+
+
+
+# Sensor fusion State estimator
+roslaunch ars_launchers robot_msf_state_estimator.launch
+
+
+
+# Sensor fusion SLAM
+roslaunch ars_launchers robot_msf_slam.launch
 
 
 
@@ -162,16 +180,6 @@ roslaunch ars_launchers robot_path_planner.launch
 roslaunch ars_launchers robot_path_planner.launch flag_use_state_estim:=True
 # With state estimator and slam
 roslaunch ars_launchers robot_path_planner.launch flag_use_state_estim:=True flag_use_slam_map:=True
-
-
-
-# Sensor fusion State estimator
-roslaunch ars_launchers robot_msf_state_estimator.launch
-
-
-
-# Sensor fusion SLAM
-roslaunch ars_launchers robot_msf_slam.launch
 
 
 
