@@ -22,10 +22,14 @@ rqt_plot
 ## SIMULATED EXPERIMENTS
 
 # Simulator robot (if simulated experiment)
-# DJI M100
-roslaunch ars_launchers robot_simulator.launch robot_sim_description_yaml_file="$(rospack find ars_config)/config/sim_robot/config_sim_robot_dji_m100.yaml"
-# DJI Tello
-roslaunch ars_launchers robot_simulator.launch robot_sim_description_yaml_file="$(rospack find ars_config)/config/sim_robot/config_sim_robot_dji_m100.yaml"
+# DJI M100 Flying
+roslaunch ars_launchers robot_simulator.launch robot_sim_description_yaml_file:="$(rospack find ars_config)/config/sim_robot/config_sim_robot_dji_m100.yaml" robot_init_status_flying:="True"
+# DJI M100 Landed
+roslaunch ars_launchers robot_simulator.launch robot_sim_description_yaml_file:="$(rospack find ars_config)/config/sim_robot/config_sim_robot_dji_m100.yaml" robot_init_status_flying:="False"
+# DJI Tello Flying
+roslaunch ars_launchers robot_simulator.launch robot_sim_description_yaml_file:="$(rospack find ars_config)/config/sim_robot/config_sim_robot_dji_tello.yaml" robot_init_status_flying:="True"
+# DJI Tello Landed
+roslaunch ars_launchers robot_simulator.launch robot_sim_description_yaml_file:="$(rospack find ars_config)/config/sim_robot/config_sim_robot_dji_tello.yaml" robot_init_status_flying:="False"
 
 
 # Simulator environment (if simulated experiment)
@@ -87,7 +91,10 @@ roslaunch ars_launchers collision_detection_simulator.launch
 
 
 # Sim obstacle detector
-roslaunch ars_launchers obstacles_detector_simulator.launch
+# Long range -> DJI M100
+roslaunch ars_launchers obstacles_detector_simulator.launch sim_obstacles_detector_params_yaml_file:="$(rospack find ars_config)/config/sim_obstacles_detector/config_sim_obstacles_detector_long_range.yaml"
+# Short range -> DJI Tello
+roslaunch ars_launchers obstacles_detector_simulator.launch sim_obstacles_detector_params_yaml_file:="$(rospack find ars_config)/config/sim_obstacles_detector/config_sim_obstacles_detector_short_range.yaml"
 
 
 # Simulator robot sensors

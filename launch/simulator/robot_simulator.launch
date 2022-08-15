@@ -2,14 +2,16 @@
 <launch>
 
 
-
   <arg name="robot_sim_description_yaml_file" default="$(find ars_config)/config/sim_robot/config_sim_robot_dji_m100.yaml"/>
+
+  <arg name="robot_init_status_flying" default="False"/>  
+  
 
   <group ns="simulator">
 
     <group ns="sim_robot">
 
-      <node pkg="ars_sim_robot" type="ars_sim_robot_ros_node.py" name="ars_sim_robot_node" output="screen">
+      <node pkg="ars_sim_robot" type="ars_sim_robot_dynamics_ros_node.py" name="ars_sim_robot_dynamics_node" output="screen">
 
         <remap from="robot_cmd" to="/robot_cmd_unstamped"/>
         <remap from="robot_cmd_stamped" to="/robot_cmd_stamped"/>
@@ -22,10 +24,27 @@
         <remap from="robot_acceleration_robot" to="robot_acceleration_robot"/>
 
         <remap from="robot_cmd_control_enabled" to="robot_cmd_control_enabled"/>
+        <remap from="robot_motion_enabled" to="robot_motion_enabled"/>
         
         <param name="robot_sim_description_yaml_file" value="$(arg robot_sim_description_yaml_file)" />
 
       </node>
+      
+      
+      <node pkg="ars_sim_robot" type="ars_sim_robot_status_ros_node.py" name="ars_sim_robot_status_node" output="screen">
+      
+        <remap from="takeoff" to="/takeoff" />
+        <remap from="land" to="/land" />
+        
+        <remap from="robot_status" to="/robot_status" />
+        
+        <remap from="robot_cmd_control_enabled" to="robot_cmd_control_enabled"/>
+        <remap from="robot_motion_enabled" to="robot_motion_enabled"/>
+        
+        <param name="robot_init_status_flying" value="$(arg robot_init_status_flying)" />
+      
+      </node>
+
 
       
     </group>

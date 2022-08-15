@@ -1,6 +1,8 @@
 <!-- -->
 <launch>
 
+  <arg name="sim_obstacles_detector_params_yaml_file" default="$(find ars_config)/config/sim_obstacles_detector/config_sim_obstacles_detector_long_range.yaml"/>
+
   <group ns="simulator">
 
     <group ns="sim_obstacles_detector">
@@ -14,6 +16,8 @@
 
         <remap from="obstacles_detected_world" to="/obstacles_detected_world"/>
         <remap from="obstacles_detected_robot" to="/obstacles_detected_robot"/>
+    
+        <param name="sim_obstacles_detector_params_yaml_file" value="$(arg sim_obstacles_detector_params_yaml_file)" />
     
       </node>
      
