@@ -13,7 +13,19 @@
 
   <group ns="path_planner">
 
-    <node name="ars_path_planner_node" pkg="ars_path_planner" type="ars_path_planner_ros_node.py" output="screen" >
+    <node name="ars_path_planner_core_node" pkg="ars_path_planner" type="ars_path_planner_core_ros_node.py" output="screen" >
+      <remap from="robot_pose_des" to="/robot_pose_des"/>      
+
+      <remap from="robot_pose" to="$(arg topic_robot_pose)"/>
+      <remap from="obstacles_world" to="$(arg topic_obstacles_world)"/>
+
+      <remap from="robot_trajectory_ref" to="/robot_trajectory_ref"/>
+      <remap from="robot_trajectory_ref_raw" to="/robot_trajectory_ref_raw"/>
+
+    </node>
+    
+    
+    <node name="ars_path_planner_manager_node" pkg="ars_path_planner" type="ars_path_planner_manager_ros_node.py" output="screen" >
       <remap from="robot_pose_des" to="/robot_pose_des"/>      
 
       <remap from="robot_pose" to="$(arg topic_robot_pose)"/>

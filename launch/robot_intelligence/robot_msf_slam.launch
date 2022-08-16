@@ -1,6 +1,8 @@
 <!-- -->
 <launch>
 
+  <arg name="config_param_msf_slam_yaml_file" default="$(find ars_config_robot_intelligence)/config/msf_slam/config_msf_slam.yaml"/>
+
   <group ns="msf_slam">
 
     <node name="ars_msf_slam_node" pkg="ars_msf_slam" type="ars_msf_slam_ros_node.py" output="screen" >
@@ -21,6 +23,8 @@
       <remap from="estim_robot_velocity_world_cov" to="/estim_robot_velocity_world_cov"/>
 
       <remap from="estim_map_world" to="/estim_map_world"/>
+      
+      <param name="config_param_msf_slam_yaml_file" value="$(arg config_param_msf_slam_yaml_file)" /> 
 
     </node>
     

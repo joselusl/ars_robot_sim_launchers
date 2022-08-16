@@ -9,6 +9,7 @@
   <arg name="topic_robot_velocity_world" value="/simulator/sim_robot/robot_velocity_world" if="$(eval flag_use_state_estim == False)"/>
   <arg name="topic_robot_velocity_world" value="/estim_robot_velocity_world" if="$(eval flag_use_state_estim == True)"/>
 
+  <arg name="config_param_path_follower_yaml_file" default="$(find ars_config_robot_intelligence)/config/path_follower/config_path_follower.yaml"/>
 
   <group ns="path_follower">
 
@@ -20,7 +21,9 @@
 
       <remap from="robot_pose_ctr_ref" to="/robot_pose_ref"/>
       <remap from="robot_velocity_world_ctr_ref" to="/robot_velocity_world_ref"/>
-      <remap from="robot_ctr_cmd_ref" to="/robot_cmd_ref"/>     
+      <remap from="robot_ctr_cmd_ref" to="/robot_cmd_ref"/>  
+      
+      <param name="config_param_path_follower_yaml_file" value="$(arg config_param_path_follower_yaml_file)" />    
 
     </node>
     

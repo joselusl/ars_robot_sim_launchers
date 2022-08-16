@@ -9,9 +9,10 @@
   <arg name="topic_robot_velocity_world" value="/simulator/sim_robot/robot_velocity_world" if="$(eval flag_use_state_estim == False)"/>
   <arg name="topic_robot_velocity_world" value="/estim_robot_velocity_world" if="$(eval flag_use_state_estim == True)"/>
   
-  
   <arg name="robot_cmd_ctr_unstamped" default="/robot_cmd_ctr_unstamped" />
   <arg name="robot_cmd_ctr_stamped" default="/robot_cmd_ctr_stamped" />
+  
+  <arg name="config_param_motion_controller_pid_yaml_file" default="$(find ars_config_robot_intelligence)/config/motion_controller_pid/config_motion_controller_pid_dji_m100.yaml"/>
 
 
   <group ns="motion_controller">
@@ -25,7 +26,9 @@
 
       <remap from="robot_pose_ref" to="/robot_pose_ref"/>
       <remap from="robot_velocity_world_ref" to="/robot_velocity_world_ref"/>
-      <remap from="robot_cmd_ref" to="/robot_cmd_ref"/>     
+      <remap from="robot_cmd_ref" to="/robot_cmd_ref"/>
+      
+      <param name="config_param_motion_controller_pid_yaml_file" value="$(arg config_param_motion_controller_pid_yaml_file)" /> 
 
     </node>
     

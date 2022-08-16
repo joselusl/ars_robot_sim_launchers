@@ -1,6 +1,8 @@
 <!-- -->
 <launch>
 
+  <arg name="config_param_msf_state_estimator_yaml_file" default="$(find ars_config_robot_intelligence)/config/msf_state_estimator/config_msf_state_estimator.yaml"/>
+
   <group ns="msf_state_estimator">
 
     <node name="ars_msf_state_estimator_node" pkg="ars_msf_state_estimator" type="ars_msf_state_estimator_ros_node.py" output="screen" >
@@ -18,6 +20,8 @@
 
       <remap from="estim_robot_velocity_world" to="/estim_robot_velocity_world"/>
       <remap from="estim_robot_velocity_world_cov" to="/estim_robot_velocity_world_cov"/>
+      
+      <param name="config_param_msf_state_estimator_yaml_file" value="$(arg config_param_msf_state_estimator_yaml_file)" /> 
 
     </node>
     
