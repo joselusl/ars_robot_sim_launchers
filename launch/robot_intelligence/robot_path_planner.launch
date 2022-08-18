@@ -10,6 +10,7 @@
   <arg name="topic_obstacles_world" value="/estim_map_world_sim" if="$(eval flag_use_slam_map == False)"/>
   <arg name="topic_obstacles_world" value="/estim_map_world" if="$(eval flag_use_slam_map == True)"/>
 
+  <arg name="config_param_path_planner_core_yaml_file" default="$(find ars_config_robot_intelligence)/config/path_planner/config_path_planner_core_sim_env.yaml"/>
 
   <group ns="path_planner">
 
@@ -21,6 +22,8 @@
 
       <remap from="robot_trajectory_ref" to="/robot_trajectory_ref"/>
       <remap from="robot_trajectory_ref_raw" to="/robot_trajectory_ref_raw"/>
+      
+      <param name="config_param_path_planner_core_yaml_file" value="$(arg config_param_path_planner_core_yaml_file)" /> 
 
     </node>
     
