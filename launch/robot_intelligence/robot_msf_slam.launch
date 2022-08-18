@@ -7,6 +7,7 @@
 
     <node name="ars_msf_slam_node" pkg="ars_msf_slam" type="ars_msf_slam_ros_node.py" output="screen" >
 
+      <remap from="meas_robot_position" to="/meas_robot_position"/>
       <remap from="meas_robot_attitude" to="/meas_robot_attitude"/>
       <remap from="meas_robot_velocity_robot" to="/meas_robot_velocity_robot"/>
 
