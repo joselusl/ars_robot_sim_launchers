@@ -46,6 +46,10 @@ roslaunch ars_launchers environment_simulator.launch environment_description_yam
 roslaunch ars_launchers environment_simulator.launch environment_description_yaml_file:="$(rospack find ars_config)/config/sim_environment/obstacles_env_03.yaml"
 # Env 04
 roslaunch ars_launchers environment_simulator.launch environment_description_yaml_file:="$(rospack find ars_config)/config/sim_environment/obstacles_env_04.yaml"
+# Aerolab Env 01
+roslaunch ars_launchers environment_simulator.launch environment_description_yaml_file:="$(rospack find ars_config)/config/sim_environment/obstacles_env_aerolab_01.yaml"
+# Aerolab Env 02
+roslaunch ars_launchers environment_simulator.launch environment_description_yaml_file:="$(rospack find ars_config)/config/sim_environment/obstacles_env_aerolab_02.yaml"
 
 
 
