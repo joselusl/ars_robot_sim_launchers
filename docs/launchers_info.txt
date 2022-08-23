@@ -52,16 +52,24 @@ roslaunch ars_launchers environment_simulator.launch environment_description_yam
 
 ## REAL EXPERIMENTS
 
-# Config for real experiments (if real experiment)
+# Config for real experiments in every terminal (if real experiment) -> TODO Check master IP
+# Option 1 -> preferred
+source $ARS_PROJECT/setup.bash 192.168.30.129
+# Option 2
 # Master IP
-export ROS_MASTER_URI=http://192.168.30.106:11311
-export ROS_IP=192.168.30.106
+export ROS_MASTER_URI=http://192.168.30.129:11311
+export ROS_IP=192.168.30.129
 # Own IP (check on your virtual machine)
-export ROS_HOSTNAME=192.168.30.107
+export ROS_HOSTNAME=192.168.30.XX
 
 
 # Optitrack node -> In External computer (if real experiment)
-# TODO
+roslaunch ars_launchers optitrack_node.launch server:=192.168.30.105
+
+
+# DJI Tello driver (if real experiment)
+roslaunch ars_launchers dji_tello_driver_ros.launch connect_to_tello_wifi_auto:=False
+
 
 
 # Optitrack transformation (if real experiment)
@@ -77,8 +85,6 @@ roslaunch ars_launchers optitrack_transf_robot.launch meas_robot_frame:="optitra
 
 
 
-# DJI Tello driver (if real experiment)
-roslaunch ars_launchers dji_tello_driver_ros.launch connect_to_tello_wifi_auto:=False
 
 
 
