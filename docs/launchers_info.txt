@@ -81,7 +81,7 @@ roslaunch ars_launchers optitrack_transf_environment_static.launch optitrack_tra
 roslaunch ars_launchers optitrack_transf_environment_dynamic.launch optitrack_transf_environment_description_yaml_file:="$(rospack find ars_config)/config/optitrack_transf/optitrack_transf_environment.yaml" obstacles_label:="dynamic"
 
 # Aerial Robot
-roslaunch ars_launchers optitrack_transf_robot.launch meas_robot_frame:="optitrack_robot_base_link" meas_world_frame:="optitrack_world"
+roslaunch ars_launchers optitrack_transf_robot.launch meas_robot_frame:="optitrack_robot_base_link" meas_world_frame:="world"
 
 
 

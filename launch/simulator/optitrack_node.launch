@@ -8,31 +8,34 @@
 
   <arg name="server" default="localhost"/>
 
-    
-  <group ns="optitrack">
+  
+  <group ns="simulator">
 
-    <node pkg="vrpn_client_ros" type="vrpn_client_node" name="$(arg ars_optitrack_node_node_name)" output="$(arg screen)">
-      <rosparam subst_value="true">
-        server: $(arg server)
-        port: 3883
+    <group ns="optitrack">
 
-        update_frequency: 100.0
-        frame_id: world
+      <node pkg="vrpn_client_ros" type="vrpn_client_node" name="$(arg ars_optitrack_node_node_name)" output="$(arg screen)">
+        <rosparam subst_value="true">
+          server: $(arg server)
+          port: 3883
 
-        # Use the VRPN server's time, or the client's ROS time.
-        use_server_time: false
-        broadcast_tf: true
+          update_frequency: 100.0
+          frame_id: world
 
-        # Must either specify refresh frequency > 0.0, or a list of trackers to create
-        refresh_tracker_frequency: 1.0
-        #trackers:
-        #- FirstTracker
-        #- SecondTracker
-      </rosparam>
-    </node>
+          # Use the VRPN server's time, or the client's ROS time.
+          use_server_time: false
+          broadcast_tf: true
+
+          # Must either specify refresh frequency > 0.0, or a list of trackers to create
+          refresh_tracker_frequency: 1.0
+          #trackers:
+          #- FirstTracker
+          #- SecondTracker
+        </rosparam>
+      </node>
 
       
-
+    </group>
+    
   </group>
   
 
