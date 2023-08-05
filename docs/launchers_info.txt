@@ -167,6 +167,13 @@ roslaunch ars_launchers robot_obstacle_avoidance_react.launch config_param_obsta
 
 
 
+# Reactive obstacle avoidance 3D - NO!!!
+# DJI M100
+roslaunch ars_launchers robot_obstacle_avoidance_react_3d.launch config_param_obstacle_avoidance_react_yaml_file:="$(rospack find ars_config_robot_intelligence)/config/obstacle_avoidance_react_3d/config_obstacle_avoidance_react_dji_m100.yaml"
+# DJI Tello
+roslaunch ars_launchers robot_obstacle_avoidance_react_3d.launch config_param_obstacle_avoidance_react_yaml_file:="$(rospack find ars_config_robot_intelligence)/config/obstacle_avoidance_react_3d/config_obstacle_avoidance_react_dji_tello.yaml"
+
+
 # Sensor fusion State estimator
 roslaunch ars_launchers robot_msf_state_estimator.launch
 
@@ -178,14 +185,14 @@ roslaunch ars_launchers robot_msf_slam.launch
 
 
 # Motion controller PID - NEW
-# DJI M100 Without state estimator
-roslaunch ars_launchers robot_motion_controller_pid.launch robot_cmd_ctr_stamped:=/robot_cmd_ctr_stamped robot_cmd_ctr:=/robot_cmd_ctr flag_use_state_estim:=False config_param_motion_controller_pid_yaml_file:="$(rospack find ars_config_robot_intelligence)/config/motion_controller_pid/config_motion_controller_pid_dji_m100.yaml"
-# DJI M100 With state estimator
-roslaunch ars_launchers robot_motion_controller_pid.launch robot_cmd_ctr_stamped:=/robot_cmd_ctr_stamped robot_cmd_ctr:=/robot_cmd_ctr flag_use_state_estim:=True config_param_motion_controller_pid_yaml_file:="$(rospack find ars_config_robot_intelligence)/config/motion_controller_pid/config_motion_controller_pid_dji_m100.yaml"
-# DJI Tello Without state estimator
-roslaunch ars_launchers robot_motion_controller_pid.launch robot_cmd_ctr_stamped:=/robot_cmd_ctr_stamped robot_cmd_ctr:=/robot_cmd_ctr flag_use_state_estim:=False config_param_motion_controller_pid_yaml_file:="$(rospack find ars_config_robot_intelligence)/config/motion_controller_pid/config_motion_controller_pid_dji_tello.yaml"
-# DJI Tello With state estimator
-roslaunch ars_launchers robot_motion_controller_pid.launch robot_cmd_ctr_stamped:=/robot_cmd_ctr_stamped robot_cmd_ctr:=/robot_cmd_ctr flag_use_state_estim:=True config_param_motion_controller_pid_yaml_file:="$(rospack find ars_config_robot_intelligence)/config/motion_controller_pid/config_motion_controller_pid_dji_tello.yaml"
+# DJI M100 Without state estimator and connected to aerial vehicle
+roslaunch ars_launchers robot_motion_controller_pid.launch flag_connect_to_aerial_vehicle:=True flag_use_state_estim:=False config_param_motion_controller_pid_yaml_file:="$(rospack find ars_config_robot_intelligence)/config/motion_controller_pid/config_motion_controller_pid_dji_m100.yaml"
+# DJI M100 With state estimator and reactive obstacle avoidance
+roslaunch ars_launchers robot_motion_controller_pid.launch flag_connect_to_aerial_vehicle:=False flag_use_state_estim:=True config_param_motion_controller_pid_yaml_file:="$(rospack find ars_config_robot_intelligence)/config/motion_controller_pid/config_motion_controller_pid_dji_m100.yaml"
+# DJI Tello Without state estimator and connected to aerial vehicle
+roslaunch ars_launchers robot_motion_controller_pid.launch flag_connect_to_aerial_vehicle:=True flag_use_state_estim:=False config_param_motion_controller_pid_yaml_file:="$(rospack find ars_config_robot_intelligence)/config/motion_controller_pid/config_motion_controller_pid_dji_tello.yaml"
+# DJI Tello With state estimator and reactive obstacle avoidance
+roslaunch ars_launchers robot_motion_controller_pid.launch flag_connect_to_aerial_vehicle:=False flag_use_state_estim:=True config_param_motion_controller_pid_yaml_file:="$(rospack find ars_config_robot_intelligence)/config/motion_controller_pid/config_motion_controller_pid_dji_tello.yaml"
 
 
 
