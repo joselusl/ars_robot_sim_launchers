@@ -9,7 +9,7 @@ def generate_launch_description():
     # Define the arguments
     environment_description_yaml_file_arg=DeclareLaunchArgument(
       'environment_description_yaml_file',
-      default_value=PathJoinSubstitution([FindPackageShare('ars_config'), 'config', 'sim_environment', 'obstacles_env_00.yaml']), 
+      default_value=PathJoinSubstitution(['sim_environment', 'obstacles_env_00.yaml']), 
       description='Path to the environment description yaml file'
     )
 
@@ -19,7 +19,7 @@ def generate_launch_description():
     )
 
     # Get the launch configuration for parameters
-    environment_description_yaml_file = LaunchConfiguration('environment_description_yaml_file')
+    environment_description_yaml_file = PathJoinSubstitution([FindPackageShare('ars_config'), 'config', LaunchConfiguration('environment_description_yaml_file')])
 
     # Define the node
     ars_sim_environment_node = Node(

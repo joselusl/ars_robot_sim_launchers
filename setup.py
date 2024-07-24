@@ -22,10 +22,10 @@ def list_subfolders_and_files(package_name, file_dir):
                 subfolders.append(entry.path)
 
         # Convert the absolute folder path to a relative path
-        relative_folder_path = os.path.relpath(folder, root_folder)
+        #relative_folder_path = os.path.relpath(folder, root_folder)
 
         # Exclude entries with empty file lists and entries for the root folder itself
-        if relative_folder_path != '.' and files_in_folder:
+        if files_in_folder:
             # Append a tuple of the relative folder path and the list of relative file paths to the result
             result.append((os.path.join(package_folder_share,folder), files_in_folder))
 

@@ -13,16 +13,15 @@ def generate_launch_description():
         description='Output setting for the nodes'
     )
 
-    sim_obstacles_detector_params_yaml_file=DeclareLaunchArgument(
+    sim_obstacles_detector_params_yaml_file_arg=DeclareLaunchArgument(
       'sim_obstacles_detector_params_yaml_file',
-      default_value=PathJoinSubstitution([
-          FindPackageShare('ars_config'),
-          'config',
-          'sim_obstacles_detector',
-          'config_sim_obstacles_detector_long_range.yaml'
-      ]),
+      default_value=PathJoinSubstitution(['sim_obstacles_detector', 'config_sim_obstacles_detector_long_range.yaml']),
       description='Path to the config file for the simulator obstacles detector'
     )
+
+    #
+    sim_obstacles_detector_params_yaml_file = PathJoinSubstitution([FindPackageShare('ars_config'), 'config', LaunchConfiguration('sim_obstacles_detector_params_yaml_file')])
+
 
     # Define the nodes
     ars_sim_obstacles_detector_node=Node(
@@ -30,7 +29,7 @@ def generate_launch_description():
       executable='ars_sim_obstacles_detector_ros_node',
       name='ars_sim_obstacles_detector_node',
       output=LaunchConfiguration('screen'),
-      parameters=[{'sim_obstacles_detector_params_yaml_file': LaunchConfiguration('sim_obstacles_detector_params_yaml_file')}],
+      parameters=[{'sim_obstacles_detector_params_yaml_file': sim_obstacles_detector_params_yaml_file}],
       remappings=[
         ('robot_pose', '/simulator/sim_robot/robot_pose'),
         ('obstacles_static', '/simulator/sim_environment/obstacles_static'),
@@ -43,7 +42,7 @@ def generate_launch_description():
     #
     return LaunchDescription([
       screen_arg,
-      sim_obstacles_detector_params_yaml_file,
+      sim_obstacles_detector_params_yaml_file_arg,
       GroupAction([
         PushRosNamespace('simulator'),
         GroupAction([

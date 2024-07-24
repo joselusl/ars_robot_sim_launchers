@@ -10,7 +10,7 @@ def generate_launch_description():
     # Define the arguments
     robot_sim_description_yaml_file_arg=DeclareLaunchArgument(
       'robot_sim_description_yaml_file',
-      default_value=PathJoinSubstitution([FindPackageShare('ars_config'), 'config', 'sim_robot', 'config_sim_robot_dji_m100.yaml']), 
+      default_value=PathJoinSubstitution(['sim_robot', 'config_sim_robot_dji_m100.yaml']), 
       description='Path to the robot sim description yaml file'
     )
 
@@ -26,7 +26,7 @@ def generate_launch_description():
     
 
     # Get the launch configuration for parameters
-    robot_sim_description_yaml_file = LaunchConfiguration('robot_sim_description_yaml_file')
+    robot_sim_description_yaml_file = PathJoinSubstitution([FindPackageShare('ars_config'), 'config', LaunchConfiguration('robot_sim_description_yaml_file')])
     robot_init_status_flying = LaunchConfiguration('robot_init_status_flying')
 
     # Define the nodes
