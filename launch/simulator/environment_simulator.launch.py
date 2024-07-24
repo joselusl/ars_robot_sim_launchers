@@ -1,17 +1,16 @@
-import os
-
-from ament_index_python.packages import get_package_share_directory
 from launch import LaunchDescription
 from launch.actions import DeclareLaunchArgument, GroupAction
-from launch.substitutions import LaunchConfiguration
+from launch.substitutions import LaunchConfiguration, PathJoinSubstitution
+from launch_ros.substitutions import FindPackageShare
 from launch_ros.actions import Node
 from launch_ros.actions import PushRosNamespace
 
 def generate_launch_description():
     # Define the arguments
-    environment_description_yaml_file_arg = DeclareLaunchArgument(
-        'environment_description_yaml_file',
-        default_value=os.path.join(get_package_share_directory('ars_config'), 'config', 'sim_environment', 'obstacles_env_00.yaml')
+    environment_description_yaml_file_arg=DeclareLaunchArgument(
+      'environment_description_yaml_file',
+      default_value=PathJoinSubstitution([FindPackageShare('ars_config'), 'config', 'sim_environment', 'obstacles_env_00.yaml']), 
+      description='Path to the environment description yaml file'
     )
 
     screen_arg = DeclareLaunchArgument(

@@ -1,48 +1,62 @@
-<!-- -->
-<launch>
+from launch import LaunchDescription
+from launch.substitutions import LaunchConfiguration
+from launch.actions import DeclareLaunchArgument, GroupAction
+from launch_ros.actions import Node
+from launch_ros.actions import PushRosNamespace
 
-  <group ns="simulator">
+def generate_launch_description():
+    # Define the arguments
+    screen_arg = DeclareLaunchArgument(
+        'screen', default_value='screen',
+        description='Output setting for the nodes'
+    )
 
-    <group ns="sim_sensors_robot">
+    # Define the nodes
+    ars_sim_sensor_posi_robot_node=Node(
+      package='ars_sim_sensors_robot',
+      executable='ars_sim_sensor_posi_robot_ros_node',
+      name='ars_sim_sensor_posi_robot_node',
+      output=LaunchConfiguration('screen'),
+      remappings=[
+          ('robot_pose', '/simulator/sim_robot/robot_pose'),
+          ('meas_robot_position', '/meas_robot_position'),
+      ]
+    )
 
-      <!--
-      <node pkg="ars_sim_sensors_robot" type="ars_sim_sensor_pos_robot_ros_node.py" name="ars_sim_sensor_pos_robot_node" output="screen">
+    ars_sim_sensor_atti_robot_ros_node=Node(
+      package='ars_sim_sensors_robot',
+      executable='ars_sim_sensor_atti_robot_ros_node',
+      name='ars_sim_sensor_atti_robot_node',
+      output=LaunchConfiguration('screen'),
+      remappings=[
+          ('robot_pose', '/simulator/sim_robot/robot_pose'),
+          ('meas_robot_attitude', '/meas_robot_attitude'),
+      ]
+    )
+    
+    ars_sim_sensor_vel_robot_ros_node=Node(
+      package='ars_sim_sensors_robot',
+      executable='ars_sim_sensor_vel_robot_ros_node',
+      name='ars_sim_sensor_vel_robot_node',
+      output=LaunchConfiguration('screen'),
+      remappings=[
+          ('robot_velocity', '/simulator/sim_robot/robot_velocity_robot'),
+          ('meas_robot_velocity', '/meas_robot_velocity_robot'),
+          ('meas_robot_velocity_cov', '/meas_robot_velocity_robot_cov'),
+      ]
+    )
 
-        <remap from="robot_pose" to="/simulator/sim_robot/robot_pose"/>
 
-        <remap from="meas_robot_pose" to="/meas_robot_pose"/>
-        <remap from="meas_robot_pose_cov" to="/meas_robot_pose_cov"/>
-
-      </node>
-      -->
-
-      <node pkg="ars_sim_sensors_robot" type="ars_sim_sensor_posi_robot_ros_node.py" name="ars_sim_sensor_posi_robot_node" output="screen">
-
-        <remap from="robot_pose" to="/simulator/sim_robot/robot_pose"/>
-
-        <remap from="meas_robot_position" to="/meas_robot_position"/>
-
-      </node>
-
-      <node pkg="ars_sim_sensors_robot" type="ars_sim_sensor_atti_robot_ros_node.py" name="ars_sim_sensor_atti_robot_node" output="screen">
-
-        <remap from="robot_pose" to="/simulator/sim_robot/robot_pose"/>
-
-        <remap from="meas_robot_attitude" to="/meas_robot_attitude"/>
-
-      </node>
-
-      <node pkg="ars_sim_sensors_robot" type="ars_sim_sensor_vel_robot_ros_node.py" name="ars_sim_sensor_vel_robot_node" output="screen">
-
-        <remap from="robot_velocity" to="/simulator/sim_robot/robot_velocity_robot"/>
-
-        <remap from="meas_robot_velocity" to="/meas_robot_velocity_robot"/>
-        <remap from="meas_robot_velocity_cov" to="/meas_robot_velocity_robot_cov"/>
-
-      </node>
-      
-    </group>
-
-  </group>
-
-</launch>
+    #
+    return LaunchDescription([
+        screen_arg,
+        GroupAction([
+          PushRosNamespace('simulator'),
+          GroupAction([
+            PushRosNamespace('sim_sensors_robot'),
+            ars_sim_sensor_posi_robot_node,
+            ars_sim_sensor_atti_robot_ros_node,
+            ars_sim_sensor_vel_robot_ros_node,
+          ])
+        ])
+    ])

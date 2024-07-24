@@ -1,18 +1,17 @@
-import os
-
-from ament_index_python.packages import get_package_share_directory
 from launch import LaunchDescription
 from launch.actions import DeclareLaunchArgument, GroupAction
-from launch.substitutions import LaunchConfiguration
+from launch.substitutions import LaunchConfiguration, PathJoinSubstitution
+from launch_ros.substitutions import FindPackageShare
 from launch_ros.actions import Node
 from launch_ros.actions import PushRosNamespace
 
 
 def generate_launch_description():
     # Define the arguments
-    robot_sim_description_yaml_file_arg = DeclareLaunchArgument(
-        'robot_sim_description_yaml_file',
-        default_value=os.path.join(get_package_share_directory('ars_config'), 'config', 'sim_robot', 'config_sim_robot_dji_m100.yaml')
+    robot_sim_description_yaml_file_arg=DeclareLaunchArgument(
+      'robot_sim_description_yaml_file',
+      default_value=PathJoinSubstitution([FindPackageShare('ars_config'), 'config', 'sim_robot', 'config_sim_robot_dji_m100.yaml']), 
+      description='Path to the robot sim description yaml file'
     )
 
     robot_init_status_flying_arg = DeclareLaunchArgument(
