@@ -1,21 +1,39 @@
-<!-- -->
-<launch>
+from launch import LaunchDescription
+from launch.actions import DeclareLaunchArgument, GroupAction
+from launch_ros.actions import Node
+from launch.substitutions import LaunchConfiguration
+from launch_ros.actions import PushRosNamespace
 
-  <group ns="simulator">
 
-    <group ns="sim_mapper">
+def generate_launch_description():
+    # Define the arguments
+    screen_arg = DeclareLaunchArgument(
+        'screen', default_value='screen',
+        description='Output setting for the nodes'
+    )
 
-      <node name="ars_sim_mapper_node" pkg="ars_sim_mapper" type="ars_sim_mapper_ros_node.py" output="screen" >
+    # Define the nodes
+    ars_sim_mapper_node=Node(
+      package='ars_sim_mapper',
+      executable='ars_sim_mapper_ros_node',
+      name='ars_sim_mapper_node',
+      output=LaunchConfiguration('screen'),
+      parameters=[],
+      remappings=[
+        ('obstacles_static', '/simulator/sim_environment/obstacles_static'),
+        ('obstacles_dynamic', '/simulator/sim_environment/obstacles_dynamic'),
+        ('estim_map_world', '/estim_map_world_sim'),
+      ]
+    )
 
-        <remap from="obstacles_static" to="/simulator/sim_environment/obstacles_static"/>
-        <remap from="obstacles_dynamic" to="/simulator/sim_environment/obstacles_dynamic"/>
-
-        <remap from="estim_map_world" to="/estim_map_world_sim"/>
-    
-      </node>
-     
-    </group>
-
-  </group>
-
-</launch>
+    #
+    return LaunchDescription([
+      screen_arg,
+      GroupAction([
+        PushRosNamespace('simulator'),
+        GroupAction([
+          PushRosNamespace('sim_mapper'),
+          ars_sim_mapper_node,
+        ]),
+      ])
+    ])
