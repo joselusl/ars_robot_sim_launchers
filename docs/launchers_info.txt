@@ -1,14 +1,11 @@
 # source
-source $ARS_CATKIN_WORKSPACE/devel/setup.bash
+source $WORKSPACE/install/setup.bash
 
 # compile
-catkin build
+colcon build
 
 # clean
-catkin clean
-
-# ros master
-roscore
+rm -rf build/ install/ log/
 
 
 # rqt tools
