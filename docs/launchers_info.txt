@@ -16,6 +16,8 @@ rqt_plot
 
 
 
+
+
 ## SIMULATED EXPERIMENTS
 
 # Simulator robot (if simulated experiment)
@@ -126,6 +128,18 @@ ros2 launch ars_launchers robot_urdf_dji_tello.launch.py
 rviz2
 # with ars config
 rosrun rviz rviz -d $(rospack find ars_config)/config/rviz_config/rviz_conf_sim.rviz
+
+
+
+
+
+
+## FULL SIMULATOR (with urdf model for visualization)
+# DJI M100 Flying Env00
+ros2 launch ars_launchers full_robot_simulator_dji_m100.launch.py robot_init_status_flying:="True" environment_description_yaml_file:="sim_environment/obstacles_env_00.yaml"
+
+
+
 
 
 
