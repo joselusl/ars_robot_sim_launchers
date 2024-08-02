@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <package format="3">
-  <name>ars_launchers</name>
+  <name>ars_robot_sim_launchers</name>
   <version>0.0.1</version>
-  <description>The ars_launchers</description>
+  <description>The ars_robot_sim_launchers</description>
 
   <maintainer email="joseluis.sanlop@gmail.com">Jose Luis SANCHEZ-LOPEZ</maintainer>
 

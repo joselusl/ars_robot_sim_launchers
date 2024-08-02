@@ -26,7 +26,7 @@ def generate_launch_description():
     
 
     # Get the launch configuration for parameters
-    robot_sim_description_yaml_file = PathJoinSubstitution([FindPackageShare('ars_config'), 'config', LaunchConfiguration('robot_sim_description_yaml_file')])
+    robot_sim_description_yaml_file = PathJoinSubstitution([FindPackageShare('ars_robot_sim_config'), 'config', LaunchConfiguration('robot_sim_description_yaml_file')])
     robot_init_status_flying = LaunchConfiguration('robot_init_status_flying')
 
     # Define the nodes

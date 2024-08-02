@@ -19,7 +19,7 @@ def generate_launch_description():
     )
 
     # Get the launch configuration for parameters
-    environment_description_yaml_file = PathJoinSubstitution([FindPackageShare('ars_config'), 'config', LaunchConfiguration('environment_description_yaml_file')])
+    environment_description_yaml_file = PathJoinSubstitution([FindPackageShare('ars_robot_sim_config'), 'config', LaunchConfiguration('environment_description_yaml_file')])
 
     # Define the node
     ars_sim_environment_node = Node(

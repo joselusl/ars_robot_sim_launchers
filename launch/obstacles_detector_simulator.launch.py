@@ -20,7 +20,7 @@ def generate_launch_description():
     )
 
     #
-    sim_obstacles_detector_params_yaml_file = PathJoinSubstitution([FindPackageShare('ars_config'), 'config', LaunchConfiguration('sim_obstacles_detector_params_yaml_file')])
+    sim_obstacles_detector_params_yaml_file = PathJoinSubstitution([FindPackageShare('ars_robot_sim_config'), 'config', LaunchConfiguration('sim_obstacles_detector_params_yaml_file')])
 
 
     # Define the nodes

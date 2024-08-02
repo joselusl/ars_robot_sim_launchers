@@ -1,7 +1,7 @@
 from setuptools import find_packages, setup
 import os
 
-package_name = 'ars_launchers'
+package_name = 'ars_robot_sim_launchers'
 
 
 def list_subfolders_and_files(package_name, file_dir):
