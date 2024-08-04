@@ -61,6 +61,7 @@ def generate_launch_description():
             ('robot_status', '/robot_status'),
             ('robot_cmd_control_enabled', 'robot_cmd_control_enabled'),
             ('robot_motion_enabled', 'robot_motion_enabled'),
+            ('robot_collision', '/simulator/sim_robot/robot_collision'),
         ]
     )
 

@@ -109,7 +109,22 @@ def generate_launch_description():
             ('robot_status', '/robot_status'),
             ('robot_cmd_control_enabled', 'robot_cmd_control_enabled'),
             ('robot_motion_enabled', 'robot_motion_enabled'),
+            ('robot_collision', '/simulator/sim_robot/robot_collision'),
         ]
+    )
+
+    ars_sim_collision_detection_node=Node(
+      package='ars_sim_collision_detection',
+      executable='ars_sim_collision_detection_ros_node',
+      name='ars_sim_collision_detection_node',
+      output=LaunchConfiguration('screen'),
+      parameters=[],
+      remappings=[
+        ('robot_pose', '/simulator/sim_robot/robot_pose'),
+        ('obstacles_static', '/simulator/sim_environment/obstacles_static'),
+        ('obstacles_dynamic', '/simulator/sim_environment/obstacles_dynamic'),
+        ('robot_collision', '/simulator/sim_robot/robot_collision'),
+      ]
     )
 
     ars_sim_environment_node = Node(
@@ -209,13 +224,14 @@ def generate_launch_description():
                         PushRosNamespace('sim_robot'),
                         ars_sim_robot_dynamics_node,
                         ars_sim_robot_status_node,
+                        ars_sim_collision_detection_node,
                         joint_state_publisher,
                         robot_state_publisher,
                     ]
                 ),
                 GroupAction([
                     PushRosNamespace('sim_environment'),
-                    ars_sim_environment_node
+                    ars_sim_environment_node,
                 ]),
                 GroupAction([
                     PushRosNamespace('sim_obstacles_detector'),

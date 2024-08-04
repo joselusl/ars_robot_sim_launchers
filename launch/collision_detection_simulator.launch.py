@@ -23,7 +23,6 @@ def generate_launch_description():
         ('robot_pose', '/simulator/sim_robot/robot_pose'),
         ('obstacles_static', '/simulator/sim_environment/obstacles_static'),
         ('obstacles_dynamic', '/simulator/sim_environment/obstacles_dynamic'),
-        # The topic robot collision does not work!!!
         ('robot_collision', '/simulator/sim_robot/robot_collision'),
       ]
     )
