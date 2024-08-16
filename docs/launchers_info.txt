@@ -100,7 +100,8 @@ ros2 launch ars_robot_sim_launchers rviz_visualization.launch.py
 ## FULL SIMULATOR (with urdf model for visualization)
 # DJI M100 Flying Env00
 ros2 launch ars_robot_sim_launchers full_robot_simulator_dji_m100.launch.py robot_init_status_flying:="True" environment_description_yaml_file:="sim_environment/obstacles_env_00.yaml"
-
+# DJI Tello Flying Env00
+ros2 launch ars_robot_sim_launchers full_robot_simulator_dji_tello.launch.py robot_init_status_flying:="True" environment_description_yaml_file:="sim_environment/obstacles_env_00.yaml"
 
 
 
